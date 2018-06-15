@@ -12,7 +12,7 @@ public class CalculatorController {
 	}
 	
 	private int multiply(int first, int second) {
-		
+		return first * second;
 	}
 	
 	private int divide(int first, int second) {
