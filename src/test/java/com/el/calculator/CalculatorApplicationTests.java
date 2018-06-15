@@ -69,7 +69,7 @@ public class CalculatorApplicationTests {
 		assertEquals(cc.divide(2, 2), 1);
 		assertEquals(cc.divide(4, 2), 2);
 		assertEquals(cc.divide(16, 4), 4);
-		assertEquals(cc.divide(350, 5), 50);
+		assertEquals(cc.divide(350, 5), 70);
 		assertEquals(cc.divide(-452, -2), 226);
 		assertEquals(cc.divide(-798, 3), -266);
 		assertEquals(cc.divide(5930, 5), 1186);
