@@ -53,7 +53,6 @@ public class CalculatorController {
 		return mv;
 		
 	}
-
 	
 	public int add(int first, int second) {
 		 return first + second;
@@ -80,5 +79,10 @@ public class CalculatorController {
 	public int exponent(int number, int power) {
 		return (int) Math.pow(number, power);
 	}
+	
+	public double root(double number, double power) {
+		return Math.pow(number, (1/power));
+	}
+	
 	
 }
