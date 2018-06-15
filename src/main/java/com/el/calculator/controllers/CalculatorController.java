@@ -53,7 +53,6 @@ public class CalculatorController {
 		return mv;
 		
 	}
-
 	
 	public int add(int first, int second) {
 		 return first + second;
@@ -81,6 +80,10 @@ public class CalculatorController {
 		return (int) Math.pow(number, power);
 	}
 	
+	public double root(double number, double power) {
+		return Math.pow(number, (1/power));
+ }
+
 	public double sine(double first) {
 		return Math.sin(first);
 	}
@@ -99,7 +102,6 @@ public class CalculatorController {
 	public double cosecant(double first) {
 		return (1 / Math.sin(first));
 	}
-	
 	
 	
 	
