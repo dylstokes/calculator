@@ -35,6 +35,25 @@ public class CalculatorApplicationTests {
 	}
 	
 	@Test
+	public void subTests() {
+		CalculatorController cc = new CalculatorController();
+		assertEquals(cc.subtract(0, 0), 0);
+		assertEquals(cc.subtract(0, 1), -1);
+		assertEquals(cc.subtract(5, 3), 2);
+		assertEquals(cc.subtract(78643, 323), 78320);
+		assertEquals(cc.subtract(-77, 3), -80);
+	}
+	
+	@Test
+	public void exponentTests() {
+		CalculatorController cc = new CalculatorController();
+		assertEquals(cc.exponent(0, 0), 1);
+		assertEquals(cc.exponent(1, 1), 1);
+		assertEquals(cc.exponent(78, 4), 37015056);
+		assertEquals(cc.exponent(-5, 2), 25);
+	}
+	
+  @Test
 	public void divideTest() {
 		CalculatorController cc = new CalculatorController();
 		assertEquals(cc.divide(1, 1), 1);
