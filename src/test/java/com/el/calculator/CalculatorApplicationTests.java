@@ -18,7 +18,6 @@ public class CalculatorApplicationTests {
 	public void contextLoads() {
 	}
 	
-	
 	@Test
 	public void addTest() {
 		CalculatorController cc = new CalculatorController();
@@ -35,6 +34,16 @@ public class CalculatorApplicationTests {
 	}
 	
 	@Test
+	public void multiplyTest() {
+		CalculatorController cc = new CalculatorController();
+		assertEquals(cc.multiply(6, 3), 18);
+		assertEquals(cc.multiply(-9, 4), -36);
+		assertEquals(cc.multiply(200, -450), -90000);
+		assertEquals(cc.multiply(-35, -50), 1750);
+		assertEquals(cc.multiply(0, 654), 0);
+  }
+    
+  @Test
 	public void subTests() {
 		CalculatorController cc = new CalculatorController();
 		assertEquals(cc.subtract(0, 0), 0);
