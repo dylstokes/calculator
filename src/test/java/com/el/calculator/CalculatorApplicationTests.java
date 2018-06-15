@@ -33,5 +33,15 @@ public class CalculatorApplicationTests {
 		assertEquals(cc.add(120, 240), 360);
 		assertEquals(cc.add(10, 10), 20);
 	}
+	
+	@Test
+	public void multiplyTest() {
+		CalculatorController cc = new CalculatorController();
+		assertEquals(cc.multiply(6, 3), 18);
+		assertEquals(cc.multiply(-9, 4), -36);
+		assertEquals(cc.multiply(200, -450), -90000);
+		assertEquals(cc.multiply(-35, -50), 1750);
+		assertEquals(cc.multiply(0, 654), 0);
+	}
 
 }
