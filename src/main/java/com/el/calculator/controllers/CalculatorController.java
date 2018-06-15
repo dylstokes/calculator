@@ -7,8 +7,8 @@ public class CalculatorController {
 		 return first + second;
 	}
 	
-	private int subtract(int first, int second) {
-
+	public int subtract(int first, int second) {
+		return first - second;
 	}
 	
 	public int multiply(int first, int second) {
