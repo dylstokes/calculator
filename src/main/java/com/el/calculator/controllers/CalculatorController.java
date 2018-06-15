@@ -22,22 +22,31 @@ public class CalculatorController {
 									    @RequestParam("secondNumber") int second, 
 									    @RequestParam("operationsList") String operation) {
 		
-		int result = 0;
+		String result = "";
+		System.out.println("Operation = " + operation);
 		switch(operation) {
 		
-		case "+": result = add(first,second);
+		case "addition": result = String.valueOf(add(first,second));
 		break;
 		
-		case "-": result = subtract(first,second);
+		case "subtraction": result = String.valueOf(subtract(first,second));
 		break;
 		
-		case "*": result = multiply(first,second);
+		case "multiplication": result = String.valueOf(multiply(first,second));
 		break;
 		
-		case "/": result = divide(first,second);
+		case "division": result = String.valueOf(divide(first,second));
+		break;
+		
+		case "exponent": result = String.valueOf(exponent(first,second));
+		break;
+		
+		default: result = "Invalid Operation";
 		break;
 		
 		}
+		
+		
 		
 		ModelAndView mv = new ModelAndView("calculator");
 		mv.addObject("calculation",result);

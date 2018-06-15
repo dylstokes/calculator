@@ -10,15 +10,22 @@
       <input type="number" name="firstNumber" required><br>
 
       <select name="operationsList">
-        <option value="addition">+</option>
-        <option value="subtraction">-</option>
-        <option value="multiplication">*</option>
-        <option value="division">/</option>
-        <option value="exponent">*</option>
+        <option value="addition" name="addition">+</option>
+        <option value="subtraction" name="subtraction">-</option>
+        <option value="multiplication" name="multiplication">*</option>
+        <option value="division" name="division">/</option>
+        <option value="exponent" name="exponent">^</option>
       </select>
 
       <br><input type="number" name="secondNumber" required>
       <br><input type="submit">
     </form>
+    
+    <p> ANSWER: </p>
+    {{#calculation}}
+    {{ calculation }}
+    {{/calculation}}
+    
+    
   </body>
 </html>
