@@ -8,7 +8,7 @@ public class CalculatorController {
 	}
 	
 	private int subtract(int first, int second) {
-		
+		return first - second;
 	}
 	
 	private int multiply(int first, int second) {
