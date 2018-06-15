@@ -18,7 +18,6 @@ public class CalculatorApplicationTests {
 	public void contextLoads() {
 	}
 	
-	
 	@Test
 	public void addTest() {
 		CalculatorController cc = new CalculatorController();
@@ -42,6 +41,39 @@ public class CalculatorApplicationTests {
 		assertEquals(cc.multiply(200, -450), -90000);
 		assertEquals(cc.multiply(-35, -50), 1750);
 		assertEquals(cc.multiply(0, 654), 0);
+  }
+    
+  @Test
+	public void subTests() {
+		CalculatorController cc = new CalculatorController();
+		assertEquals(cc.subtract(0, 0), 0);
+		assertEquals(cc.subtract(0, 1), -1);
+		assertEquals(cc.subtract(5, 3), 2);
+		assertEquals(cc.subtract(78643, 323), 78320);
+		assertEquals(cc.subtract(-77, 3), -80);
+	}
+	
+	@Test
+	public void exponentTests() {
+		CalculatorController cc = new CalculatorController();
+		assertEquals(cc.exponent(0, 0), 1);
+		assertEquals(cc.exponent(1, 1), 1);
+		assertEquals(cc.exponent(78, 4), 37015056);
+		assertEquals(cc.exponent(-5, 2), 25);
+	}
+	
+  @Test
+	public void divideTest() {
+		CalculatorController cc = new CalculatorController();
+		assertEquals(cc.divide(1, 1), 1);
+		assertEquals(cc.divide(2, 2), 1);
+		assertEquals(cc.divide(4, 2), 2);
+		assertEquals(cc.divide(16, 4), 4);
+		assertEquals(cc.divide(350, 5), 50);
+		assertEquals(cc.divide(-452, -2), 226);
+		assertEquals(cc.divide(-798, 3), -266);
+		assertEquals(cc.divide(5930, 5), 1186);
+		assertEquals(cc.divide(10950, 0), 0);
 	}
 
 }
