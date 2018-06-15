@@ -33,5 +33,19 @@ public class CalculatorApplicationTests {
 		assertEquals(cc.add(120, 240), 360);
 		assertEquals(cc.add(10, 10), 20);
 	}
+	
+	@Test
+	public void divideTest() {
+		CalculatorController cc = new CalculatorController();
+		assertEquals(cc.divide(1, 1), 1);
+		assertEquals(cc.divide(2, 2), 1);
+		assertEquals(cc.divide(4, 2), 2);
+		assertEquals(cc.divide(16, 4), 4);
+		assertEquals(cc.divide(350, 5), 50);
+		assertEquals(cc.divide(-452, -2), 226);
+		assertEquals(cc.divide(-798, 3), -266);
+		assertEquals(cc.divide(5930, 5), 1186);
+		assertEquals(cc.divide(10950, 0), 0);
+	}
 
 }
