@@ -22,4 +22,11 @@ public class CalculatorController {
 		return first / second;
 	}
 	
+	/*
+	 * NOTE WE WILL HAVE TO USE DOUBLE
+	 */
+	public int exponent(int number, int power) {
+		return (int) Math.pow(number, power);
+	}
+	
 }
