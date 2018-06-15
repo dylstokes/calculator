@@ -82,7 +82,27 @@ public class CalculatorController {
 	
 	public double root(double number, double power) {
 		return Math.pow(number, (1/power));
+ }
+
+	public double sine(double first) {
+		return Math.sin(first);
 	}
+	public double cosine(double first) {
+		return Math.cos(first);
+	}
+	public double tangent(double first) {
+		return Math.tan(first);
+	}
+	public double cotangent(double first) {
+		return (1 / Math.tan(first));
+	}
+	public double secant(double first) {
+		return (1 / Math.cos(first));
+	}
+	public double cosecant(double first) {
+		return (1 / Math.sin(first));
+	}
+	
 	
 	
 }
