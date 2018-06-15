@@ -4,11 +4,11 @@ public class CalculatorController {
 
 	
 	private int add(int first, int second) {
-		
+		 return first + second;
 	}
 	
 	private int subtract(int first, int second) {
-		
+
 	}
 	
 	private int multiply(int first, int second) {
