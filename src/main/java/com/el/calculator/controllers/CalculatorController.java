@@ -19,6 +19,11 @@ import com.el.calculator.util.OperationMapper;
 public class CalculatorController {
 	
 	private static ArrayList<String> history;
+	// future release: graceful default second values..
+	private static final Double DEF_SECOND_DBL = -0.000001;
+	private static final String DEF_SECOND = "-0.000001";
+	private static final Double DEF_ROOT = 2.0;
+	private static final Double DEF_LOG = 10.0;
 	
 	private ArrayList<String> getHistory() {
 		if(CalculatorController.history == null) {
@@ -35,11 +40,14 @@ public class CalculatorController {
 	
 	@PostMapping("")
 	public ModelAndView calculateNumber(@RequestParam("firstNumber") Double first, 
-									    @RequestParam("secondNumber") Double second, 
+									    @RequestParam(
+									    		value="secondNumber", 
+									    		required=false, 
+									    		defaultValue=CalculatorController.DEF_SECOND) 
+												Double second, 
 									    @RequestParam("operationsList") String operation) {
 		
-		addToHistory(first, second, operation);
-		
+		second = defaultSecond(second, operation);
 		String result = "";
 		
 		switch(operation) {
@@ -59,27 +67,39 @@ public class CalculatorController {
 		case "exponent": result = String.valueOf(exponent(first,second));
 		break;
 		
-		case "sine": result = String.valueOf(sine(first,second));
+		case "sine": result = String.valueOf(sine(first));
 		break;
 		
-		case "cosine": result = String.valueOf(cosine(first,second));
+		case "root": result = String.valueOf(root(first, second));
 		break;
 		
-		case "tangent": result = String.valueOf(tangent(first,second));
+		case "cosine": result = String.valueOf(cosine(first));
 		break;
 		
-		case "cotangent": result = String.valueOf(cotangent(first,second));
+		case "tangent": result = String.valueOf(tangent(first));
 		break;
 		
-		case "secant": result = String.valueOf(secant(first,second));
+		case "cotangent": result = String.valueOf(cotangent(first));
 		break;
 		
-		case "cosecant": result = String.valueOf(cosecant(first,second));
+		case "secant": result = String.valueOf(secant(first));
+		break;
+		
+		case "cosecant": result = String.valueOf(cosecant(first));
+		break;
+		
+		case "logarithm": result = String.valueOf(logarithm(first, second));
+		break;
+		
+		case "naturallog": result = String.valueOf(naturalLog(first));
+		break;
 		
 		default: result = "Invalid Operation";
 		break;
 		
 		}
+		
+		addToHistory(first, second, operation);
 		
 		ModelAndView mv = new ModelAndView("calculator");
 		mv.addObject("calculation", result);
@@ -88,7 +108,7 @@ public class CalculatorController {
 						getHistory()
 							.stream()
 							.map(f -> {
-								return String.format("<br>%s</br>", f);
+								return String.format("<ul>%s</ul>", f);
 							}).collect(Collectors.toList())));
 		return mv;
 		
@@ -110,17 +130,31 @@ public class CalculatorController {
 		case "cotangent":
 		case "cosecant":
 		case "secant":
+			formula = String.format("%s(%f)", operation.substring(0, 3), first);
+			break;
 		case "logarithm":
-			formula = String.format("%s(%f)", first, operation.substring(0, 3));
+			formula = String.format("%s[%f](%f)", operation.substring(0, 3), first, second);
+			break;
+		case "naturallog":
+			formula = String.format("ln(%f)", first);
 			break;
 		case "root":
 			formula = String.format("%f ^ (1/%f)", first, second);
+			break;
 		default:
 			formula = "Invalid formula";
 		}
 		
 		getHistory().add(formula);
 		
+	}
+	
+	private double defaultSecond(double a, String method) {
+		switch(method) {
+		case "logarithm": return CalculatorController.DEF_LOG;
+		case "root": return CalculatorController.DEF_ROOT;
+		default: return a;
+		}
 	}
 	
 	public double add(double first, double second) {
@@ -147,8 +181,22 @@ public class CalculatorController {
 	}
 	
 	public double root(double number, double power) {
+		if(equals(power, CalculatorController.DEF_SECOND_DBL)) {
+			power = CalculatorController.DEF_ROOT;
+		}
 		return Math.pow(number, (1/power));
- }
+	}
+	
+	public double logarithm(double base, double number) {
+		if(equals(base, CalculatorController.DEF_SECOND_DBL)) {
+			base = CalculatorController.DEF_LOG;
+		}
+		return Math.log(number) / Math.log(base);
+	}
+	
+	public double naturalLog(double number) {
+		return Math.log(number);
+	}
 
 	public double sine(double first) {
 		return Math.sin(first);
@@ -169,6 +217,10 @@ public class CalculatorController {
 		return (1 / Math.sin(first));
 	}
 	
+	private boolean equals(double a, double b) {
+		double eps = 0.00001;
+		return (a-eps)<b || (a+eps)>b;
+	}
 	
 	
 }

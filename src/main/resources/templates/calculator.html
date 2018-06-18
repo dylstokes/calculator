@@ -33,7 +33,7 @@
       </select>
 
 
-      <br><input type="number" name="secondNumber" required>
+      <br><input type="number" name="secondNumber">
       <br><input type="submit">
 
     </form>
@@ -44,8 +44,8 @@
     {{/calculation}}
     
     <p> HISTORY: </p>
-    {{#history}}
-    {{ history }}
-    {{/history}}
+    <ul>
+    {{#history}}{{{ history }}}{{/history}}
+    </ul>
   </body>
 </html>
