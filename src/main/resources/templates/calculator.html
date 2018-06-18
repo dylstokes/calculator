@@ -4,28 +4,46 @@
     <title> Calculator </title>
   </head>
 
-  <body>
+  <body style="text-align: center">
     <h1> Calculator </h1>
     <form method="post" action="/">
-      <input type="number" name="firstNumber" required><br>
+      <input type="number" step="0.01" name="firstNumber" required><br>
+
 
       <select name="operationsList">
-        <option value="addition" name="addition">+</option>
-        <option value="subtraction" name="subtraction">-</option>
-        <option value="multiplication" name="multiplication">*</option>
-        <option value="division" name="division">/</option>
-        <option value="exponent" name="exponent">^</option>
+        <option value="addition" name="addition">+ (ADDITION)</option>
+        <option value="subtraction" name="subtraction">- (SUBRACTION)</option>
+        <option value="multiplication" name="multiplication">* (MULTIPLICATION)</option>
+        <option value="division" name="division">/ (DIVISION)</option>
+        
+        <option value="exponent" name="exponent">^ (EXPONENT)</option>
+        <option value="root" name="root">RT (ROOT)</option>
+        
+        <option value="logarithm" name="logarithm">LOG (LOGARITHM)</option>
+        <option value="naturallog" name="naturallog">LN (NATURAL LOG)</option>
+        <option value="euler" name="euler">E (EULER)</option>
+        
+        <option value="sine" name="sine">SIN (SINE)</option>
+        <option value="cosine" name="cosine">COS (COSINE)</option>
+        <option value="tangent" name="tangent">TAN (TANGENT)</option>
+        
+        <option value="cosecant" name="cosecant">CSC (COSECANT)</option>
+        <option value="secant" name="secant">SEC (SECANT)</option>
+        <option value="cotangent" name="cotangent">COT (COTANGENT)</option>
       </select>
 
-      <br><input type="number" name="secondNumber" required>
+      <br><input type="number" step="0.01" name="secondNumber">
       <br><input type="submit">
+
     </form>
     
-    <p> ANSWER: </p>
     {{#calculation}}
     {{ calculation }}
     {{/calculation}}
     
-    
+    <p> HISTORY: </p>
+    <ul>
+    {{#history}}{{{ history }}}{{/history}}
+    </ul>
   </body>
 </html>
