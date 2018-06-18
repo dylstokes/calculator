@@ -150,11 +150,13 @@ public class CalculatorController {
 	}
 	
 	private double defaultSecond(double a, String method) {
-		switch(method) {
-		case "logarithm": return CalculatorController.DEF_LOG;
-		case "root": return CalculatorController.DEF_ROOT;
-		default: return a;
+		if(equals(a, CalculatorController.DEF_SECOND_DBL)) {
+			switch(method) {
+			case "logarithm": return CalculatorController.DEF_LOG;
+			case "root": return CalculatorController.DEF_ROOT;
+			}
 		}
+		return a;
 	}
 	
 	public double add(double first, double second) {
@@ -218,8 +220,10 @@ public class CalculatorController {
 	}
 	
 	private boolean equals(double a, double b) {
-		double eps = 0.00001;
-		return (a-eps)<b || (a+eps)>b;
+		System.out.printf("First  value: %f", a);
+		System.out.printf("Second value: %f", b);
+		double eps = 0.0001;
+		return (a+eps)<b && (a-eps)>b;
 	}
 	
 	
